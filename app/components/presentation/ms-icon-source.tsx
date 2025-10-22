@@ -78,6 +78,8 @@ import { msMonitorWeight } from '@material-symbols-react-native/outlined-400/msM
 import { msMonitorWeightFill } from '@material-symbols-react-native/outlined-400/msMonitorWeightFill';
 import { msPerson } from '@material-symbols-react-native/outlined-400/msPerson';
 import { msPersonFill } from '@material-symbols-react-native/outlined-400/msPersonFill';
+import { msLocalFireDepartment } from '@material-symbols-react-native/outlined-400/msLocalFireDepartment';
+import { msLocalFireDepartmentFill } from '@material-symbols-react-native/outlined-400/msLocalFireDepartmentFill';
 import { MsIcon } from 'material-symbols-react-native';
 import { IconProps } from 'react-native-paper/lib/typescript/components/MaterialCommunityIcon';
 import { Platform } from 'react-native';
@@ -209,6 +211,8 @@ const MaterialSymbols = {
   monitorWeightFill: msMonitorWeightFill,
   person: msPerson,
   personFill: msPersonFill,
+  localFireDepartment: msLocalFireDepartment,
+  localFireDepartmentFill: msLocalFireDepartmentFill,
 };
 
 export function MsIconSrc({ name, ...rest }: IconProps) {
