@@ -76,6 +76,27 @@ export default function Settings() {
         ></List.Item>
       </List.Section>
 
+      <List.Section title={t('Diet')}>
+        <List.Item
+          onPress={() => push('/(tabs)/settings/diet/calorie-goal')}
+          title={t('Calorie goal')}
+          description={t('Adjust your daily calorie target.')}
+          left={(props) => <List.Icon icon={'localDining'} {...props} />}
+        ></List.Item>
+        <List.Item
+          onPress={() => push('/(tabs)/settings/diet/calorie-calculator')}
+          title={t('Calorie calculator')}
+          description={t('Calculate calories for weight gain or loss goals.')}
+          left={(props) => <List.Icon icon={'calculate'} {...props} />}
+        ></List.Item>
+        <List.Item
+          onPress={() => push('/(tabs)/settings/diet/disclaimer')}
+          title={t('Diet calculation disclaimer')}
+          description={t('Learn how LiftLog estimates calorie targets.')}
+          left={(props) => <List.Icon icon={'info'} {...props} />}
+        ></List.Item>
+      </List.Section>
+
       <List.Section title={t('Support')}>
         <List.Item
           onPress={() =>

@@ -18,6 +18,8 @@ import { initializeFeedStateSlice } from '@/store/feed';
 import { applyStatsEffects } from '@/store/stats/effects';
 import { applyAiPlannerEffects } from '@/store/ai-planner/effects';
 import { initializeAiPlannerStateSlice } from '@/store/ai-planner';
+import { applyCaloriesEffects } from '@/store/calories/effects';
+import { initializeCaloriesStateSlice } from '@/store/calories';
 import { clearAllListeners } from '@reduxjs/toolkit';
 
 export { store, RootState, AppDispatch };
@@ -31,6 +33,7 @@ applyStoredSessionsEffects();
 applyFeedEffects();
 applyStatsEffects();
 applyAiPlannerEffects();
+applyCaloriesEffects();
 
 store.dispatch(initializeSettingsStateSlice());
 store.dispatch(initializeAppStateSlice());
@@ -39,6 +42,7 @@ store.dispatch(initializeProgramStateSlice());
 store.dispatch(initializeStoredSessionsStateSlice());
 store.dispatch(initializeFeedStateSlice());
 store.dispatch(initializeAiPlannerStateSlice());
+store.dispatch(initializeCaloriesStateSlice());
 
 export const useAppSelector = untypedUseSelector.withTypes<RootState>();
 

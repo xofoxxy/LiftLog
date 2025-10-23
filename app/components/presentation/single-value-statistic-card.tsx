@@ -6,9 +6,16 @@ import { Card } from 'react-native-paper';
 export default function SingleValueStatisticCard(props: {
   children: ReactNode;
   title: string;
+  onPress?: () => void;
+  testID?: string;
 }) {
   return (
-    <Card mode="contained" style={{ flex: 1 }}>
+    <Card
+      mode="contained"
+      style={{ flex: 1 }}
+      onPress={props.onPress}
+      testID={props.testID}
+    >
       <Card.Content
         style={{
           gap: spacing[1],
