@@ -65,6 +65,25 @@ export default function Layout() {
       />
 
       <Tabs.Screen
+        name="calories"
+        options={{
+          tabBarLabel: t('Calories'),
+          tabBarButtonTestID: 'nav__calories',
+          tabBarIcon: ({ color, size, focused }) => {
+            return (
+              <Icon
+                source={
+                  focused ? `localFireDepartmentFill` : 'localFireDepartment'
+                }
+                size={size}
+                color={color}
+              />
+            );
+          },
+        }}
+      />
+
+      <Tabs.Screen
         name="history"
         options={{
           tabBarLabel: t('History'),

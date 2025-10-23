@@ -1,4 +1,5 @@
 import { KeyValueStore } from '@/services/key-value-store';
+import { CalorieEntry } from '@/models/diet';
 import { ColorSchemeSeed } from '@/store/settings';
 import { DayOfWeek, Instant } from '@js-joda/core';
 import { match, P } from 'ts-pattern';
@@ -266,5 +267,52 @@ export class PreferenceService {
     return lang
       ? this.keyValueStore.setItem('preferredLanguage', lang)
       : this.keyValueStore.removeItem('preferredLanguage');
+  }
+
+  async getCalorieGoal(): Promise<number> {
+    const value = await this.keyValueStore.getItem('calorieGoal');
+    const parsed = Number.parseInt(value ?? '', 10);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : 2400;
+  }
+
+  async setCalorieGoal(goal: number): Promise<void> {
+    await this.keyValueStore.setItem(
+      'calorieGoal',
+      Math.round(goal).toString(),
+    );
+  }
+
+  async getCalorieEntries(): Promise<CalorieEntry[]> {
+    const value = await this.keyValueStore.getItem('calorieEntries');
+    if (!value) {
+      return [];
+    }
+
+    try {
+      const parsed = JSON.parse(value) as CalorieEntry[];
+      if (Array.isArray(parsed)) {
+        return parsed.filter(
+          (entry) =>
+            typeof entry === 'object' &&
+            entry !== null &&
+            typeof entry.id === 'string' &&
+            typeof entry.name === 'string' &&
+            typeof entry.calories === 'number' &&
+            typeof entry.type === 'string' &&
+            typeof entry.recordedAtIso === 'string',
+        );
+      }
+    } catch (error) {
+      console.warn('Failed to parse stored calorie entries', error);
+    }
+
+    return [];
+  }
+
+  async setCalorieEntries(entries: CalorieEntry[]): Promise<void> {
+    await this.keyValueStore.setItem(
+      'calorieEntries',
+      JSON.stringify(entries.slice(0, 500)),
+    );
   }
 }

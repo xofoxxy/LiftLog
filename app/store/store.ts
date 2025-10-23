@@ -9,6 +9,7 @@ import {
 } from '@reduxjs/toolkit';
 import { currentSessionReducer } from './current-session';
 import { settingsReducer } from './settings';
+import { caloriesReducer } from '@/store/calories';
 import programReducer from './program';
 import appReducer from './app';
 import feedReducer from './feed';
@@ -42,6 +43,7 @@ const store = configureStore({
     sessionEditor: sessionEditorReducer,
     storedSessions: storedSessionsReducer,
     stats: statsReducer,
+    calories: caloriesReducer,
   }),
 });
 
